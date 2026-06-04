@@ -1,0 +1,299 @@
+/* index.css
+   Estilos globales de TinyWins.
+   Organizado en secciones: reset, layout, header, progreso,
+   stats, hábitos, formulario, animaciones. */
+
+/* ===== Fuentes ===== */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap');
+
+/* ===== Variables de color ===== */
+:root {
+  --bg: #faf8f5;
+  --surface: #ffffff;
+  --surface-alt: #f3efe9;
+  --border: #e6e0d6;
+  --text: #2a2520;
+  --text-soft: #6b6359;
+  --text-mute: #9a9087;
+  --accent: #5d8a6f;
+  --accent-soft: #d8eadf;
+  --accent-text: #2d5641;
+  --danger: #c25450;
+}
+
+/* ===== Reset básico ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'DM Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ===== Layout principal ===== */
+.app {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+/* ===== Header ===== */
+.header {
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-family: 'Fraunces', serif;
+  font-size: 2.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.title-accent {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.date {
+  font-size: 13px;
+  color: var(--text-soft);
+  margin-top: 6px;
+}
+
+/* ===== Barra de progreso ===== */
+.progress {
+  margin-top: 1.25rem;
+}
+
+.progress-track {
+  background: var(--surface-alt);
+  border-radius: 100px;
+  height: 6px;
+  overflow: hidden;
+  border: 0.5px solid var(--border);
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 100px;
+  transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-soft);
+  margin-top: 6px;
+}
+
+/* ===== Estadísticas ===== */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 1.5rem;
+}
+
+.stat {
+  background: var(--surface-alt);
+  border-radius: 12px;
+  padding: 0.9rem;
+  text-align: center;
+}
+
+.stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: var(--text-soft);
+  margin-top: 4px;
+}
+
+/* ===== Etiqueta de sección ===== */
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+  margin: 1.75rem 0 0.75rem;
+}
+
+/* ===== Lista de hábitos ===== */
+.habit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.habit {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.85rem 1rem;
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  user-select: none;
+}
+
+.habit:hover {
+  border-color: var(--text-mute);
+  background: var(--surface-alt);
+}
+
+.habit:active {
+  transform: scale(0.985);
+}
+
+.habit-done {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.habit-done:hover {
+  background: var(--accent-soft);
+}
+
+.habit-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--text-mute);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 13px;
+  color: var(--accent-text);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.habit-done .habit-check {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.habit-emoji {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.habit-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.habit-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.habit-done .habit-name {
+  color: var(--accent-text);
+}
+
+.habit-streak {
+  font-size: 12px;
+  color: var(--text-soft);
+  margin-top: 2px;
+}
+
+.habit-done .habit-streak {
+  color: var(--accent-text);
+  opacity: 0.75;
+}
+
+.habit-delete {
+  color: var(--text-mute);
+  padding: 4px 6px;
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 0.15s, color 0.15s, background 0.15s;
+  font-size: 14px;
+}
+
+.habit:hover .habit-delete {
+  opacity: 1;
+}
+
+.habit-delete:hover {
+  color: var(--danger);
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* ===== Estado vacío ===== */
+.empty-state {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--text-mute);
+  font-size: 13px;
+  font-style: italic;
+}
+
+/* ===== Formulario de agregar ===== */
+.add-form {
+  display: flex;
+  gap: 8px;
+  margin-top: 1.5rem;
+}
+
+.add-input {
+  flex: 1;
+  padding: 0.7rem 0.95rem;
+  border: 0.5px solid var(--border);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 13px;
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.add-input:focus {
+  border-color: var(--text);
+}
+
+.add-btn {
+  padding: 0.7rem 1.1rem;
+  background: var(--text);
+  color: var(--bg);
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  transition: opacity 0.15s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.add-btn:hover {
+  opacity: 0.85;
+}
+
+.add-btn:active {
+  transform: scale(0.96);
+}
